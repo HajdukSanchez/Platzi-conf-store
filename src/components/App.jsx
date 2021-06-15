@@ -1,14 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
+import "../styles/components/app.css";
 
-const App = (props) => {
-  return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
-  );
-};
-
-App.propTypes = {};
+const App = (props) => <h1>Hello World</h1>;
 
 export default App;
