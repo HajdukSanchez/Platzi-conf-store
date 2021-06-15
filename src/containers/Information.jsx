@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/components/Information.scss';
 
 const Information = () => {
@@ -22,8 +23,12 @@ const Information = () => {
           </form>
         </div>
         <div className="Information-buttons">
-          <div className="Information-back">Back</div>
-          <div className="Information-next">Go to pay</div>
+          <div className="Information-back">
+            <Link to="/checkout">Back</Link>
+          </div>
+          <div className="Information-next">
+            <Link to="/checkout/payment">Go to pay</Link>
+          </div>
         </div>
       </div>
       <div className="Information-sidebar">
