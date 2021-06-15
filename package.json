@@ -1,0 +1,28 @@
+{
+  "name": "platzi-conf-store",
+  "version": "1.0.0",
+  "description": "Platzi Conf Store created with React Hooks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HajdukSanchez/Platzi-conf-store.git"
+  },
+  "keywords": [
+    "react",
+    "react-hooks",
+    "javascript"
+  ],
+  "author": "Jozek Andrzej Hajduk Sánchez <hajduksanchez.dev@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HajdukSanchez/Platzi-conf-store/issues"
+  },
+  "homepage": "https://github.com/HajdukSanchez/Platzi-conf-store#readme",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
