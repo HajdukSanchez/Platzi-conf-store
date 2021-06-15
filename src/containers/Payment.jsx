@@ -1,9 +1,13 @@
 import React from 'react';
+import '../styles/components/Payment.scss';
 
 const Payment = () => {
   return (
-    <div>
-      <h1>Payment</h1>
+    <div className="Payment">
+      <div className="Payment-content">
+        <h3>Order resume:</h3>
+        <div className="Payment-button">Pay with PayPal</div>
+      </div>
     </div>
   );
 };
