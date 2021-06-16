@@ -3,12 +3,14 @@ import initialState from '../initialState';
 
 const useInitialState = () => {
   const [state, setState] = useState(initialState);
+
   const addToCart = (payload) => {
     setState({
       ...state,
       cart: [...state.cart, payload],
     });
   };
+
   const removeFromCart = (payload) => {
     setState({
       ...state,
@@ -16,7 +18,7 @@ const useInitialState = () => {
     });
   };
 
-  return { addToCart, removeFromCart, state };
+  return { state, addToCart, removeFromCart };
 };
 
 export default useInitialState;
