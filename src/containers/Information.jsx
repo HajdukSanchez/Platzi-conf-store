@@ -1,8 +1,32 @@
-import React from 'react';
+import React, { useContext, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/components/Information.scss';
 
+import AppContext from '../context/AppContext';
+
 const Information = () => {
+  const {
+    state: { cart },
+    addToBuyer,
+  } = useContext(AppContext);
+  const form = useRef(null);
+
+  const handleSubmit = () => {
+    const formData = new FormData(form.current);
+    const buyer = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      address: formData.get('address'),
+      apto: formData.get('apto'),
+      city: formData.get('city'),
+      country: formData.get('country'),
+      state: formData.get('state'),
+      cp: formData.get('cp'),
+      phone: formData.get('phone'),
+    };
+    addToBuyer(buyer);
+  };
+
   return (
     <div className="Information">
       <div className="Information-content">
@@ -10,7 +34,7 @@ const Information = () => {
           <h2>Contact information</h2>
         </div>
         <div className="Information-form">
-          <form action="">
+          <form ref={form}>
             <input type="text" placeholder="Full name" name="name" />
             <input type="email" placeholder="Email" name="email" />
             <input type="text" placeholder="Address" name="address" />
@@ -27,18 +51,22 @@ const Information = () => {
             <Link to="/checkout">Back</Link>
           </div>
           <div className="Information-next">
-            <Link to="/checkout/payment">Go to pay</Link>
+            <button type="button" onClick={handleSubmit}>
+              Go to pay
+            </button>
           </div>
         </div>
       </div>
       <div className="Information-sidebar">
         <h3>Order:</h3>
-        <div className="Information-item">
-          <div className="Information-element">
-            <h4>Item name</h4>
-            <span>$10</span>
+        {cart.map((item) => (
+          <div className="Information-item">
+            <div className="Information-element">
+              <h4>{item.title}</h4>
+              <span>$ {item.price}</span>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   );
