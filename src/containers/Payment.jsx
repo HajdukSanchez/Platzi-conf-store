@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import { PayPalButton } from 'react-paypal-button';
+import { PayPalButton } from 'react-paypal-button-v2';
 import { handleSumTotal } from '../utils';
 import '../styles/components/Payment.scss';
 
@@ -12,18 +12,19 @@ const Payment = () => {
     addNewOrder,
   } = useContext(AppContext);
 
+  // Those are necessary data for paypalButton
   const paypalOptions = {
-    clientId:
-      'access_token$sandbox$qw57wzb69t345k53$edd6edd0a3d29a8c70d0775ee1857e20',
+    clientId: String(process.env.PAYPAL_API_KEY),
     intent: 'capture',
     currency: 'USD',
   };
-
+  // Those are necessary data for paypalButton
   const buttonStyles = {
     layout: 'vertical',
     shape: 'rect',
   };
 
+  // This is a function in charge of handle the paymentSuccess
   const handlePaymentSuccess = (data) => {
     console.log(data);
     if (data.status === 'COMPLETED') {
@@ -43,21 +44,21 @@ const Payment = () => {
         <h3>Order resume:</h3>
         {cart.map((item) => (
           <div className="Payment-item" key={item.id}>
-            <div className="Payement-element">
+            <div className="Payment-element">
               <h4>{item.title}</h4>
               <span>{item.price}</span>
             </div>
           </div>
         ))}
         <div className="Payment-button">
+          {/* The props are necessary for the API of paypalButton */}
           <PayPalButton
             paypalOptions={paypalOptions}
             buttonStyles={buttonStyles}
             amount={handleSumTotal(cart)}
-            onPaymentStart={() => console.log('Start payment')}
-            onPaymentSuccess={(data) => handlePaymentSuccess(data)}
-            onPaymentError={(error) => console.log(error)}
-            onPaymentCancel={(data) => console.log(data)}
+            onSuccess={(data) => handlePaymentSuccess(data)}
+            onError={(error) => console.log(error)}
+            onCancel={(data) => console.log(data)}
           />
         </div>
       </div>
