@@ -26,7 +26,6 @@ const Payment = () => {
 
   // This is a function in charge of handle the paymentSuccess
   const handlePaymentSuccess = (data) => {
-    console.log(data);
     if (data.status === 'COMPLETED') {
       const newOrder = {
         buyer,
