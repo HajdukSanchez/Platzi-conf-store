@@ -6,10 +6,7 @@ import AppContext from '../context/AppContext';
 import Product from './Product';
 
 const Products = () => {
-  const {
-    state: { products },
-    addToCart,
-  } = useContext(AppContext);
+  const { products, addToCart } = useContext(AppContext);
   // const { products } = state;
 
   // It is necessary to add the double function declaration, because if we don't, when we render the element that contains the function, it will be executed
