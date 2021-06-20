@@ -30,7 +30,7 @@ const Checkout = () => {
       </div>
       <div className="Checkout-sidebar">
         <h3>{`Total price: $ ${
-          cart.length > 0 ? handleSumTotal(cart) : ''
+          cart.length > 0 ? handleSumTotal(cart) : '0'
         }`}</h3>
         <Link to="/checkout/information">
           <button type="button" disabled={cart.length <= 0}>
